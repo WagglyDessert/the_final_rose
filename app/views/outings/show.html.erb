@@ -1,2 +1,8 @@
 <h1>Outing Information Page</h1>
 <p><%= @outing.name %></p>
+<p><%= @outing.location %></p>
+<p><%= @outing.date %></p>
+<p>Count of Contestants: <%= @outing.contestant_count %></p>
+<p>Contestants: <% @outing.contestants.each do |c| %></p>
+  <ol><%= link_to c.name, "/contestants/#{c.id}" %></ol>
+<% end %>

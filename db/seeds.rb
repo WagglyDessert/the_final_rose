@@ -26,3 +26,4 @@
 @out5 = Outing.create!(name: "Cooking Lesson", location: "Le Cordon Bleu", date: '01/01/2021')
 
 ContestantOuting.create!(contestant: @cont1, outing: @out1)
+ContestantOuting.create!(contestant: @cont2, outing: @out1)

@@ -1,0 +1,5 @@
+<h1>Bachelorette Information Page</h1>
+<p>Name: <%= @bachelorette.name %></p>
+<p>Season Number: <%= @bachelorette.season_number %></p>
+<p>Description: <%= @bachelorette.description %> </p>
+<p><%= link_to "#{@bachelorette.name}'s Contestants", "/bachelorettes/#{@bachelorette.id}/contestants" %></p>

@@ -1,0 +1,6 @@
+<h1>Contestants for Bachelorette</h1>
+<ol><% @bachelorette.contestants.each do |c| %>
+  <p>Name: <%= c.name %></p>
+  <p>Age: <%= c.age %></p>
+  <p>Hometown: <%= c.hometown %> </p><br>
+  <% end %>

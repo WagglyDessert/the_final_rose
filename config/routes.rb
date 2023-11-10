@@ -6,6 +6,9 @@ end
 resources :contestants, only: [:index, :show], controller: 'contestants'
 resources :outings, only: [:index, :show], controller: 'outings'
 
+patch "/outings/:id", to: "outings#update"
+
+
   #get "/bachelorettes/:id", to: "bachelorettes#show"
   #get "/bachelorettes/:id/contestants", to: "bachelorette_contestants#index"
 end

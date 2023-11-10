@@ -27,3 +27,9 @@
 
 ContestantOuting.create!(contestant: @cont1, outing: @out1)
 ContestantOuting.create!(contestant: @cont2, outing: @out1)
+ContestantOuting.create!(contestant: @cont1, outing: @out2)
+ContestantOuting.create!(contestant: @cont2, outing: @out2)
+ContestantOuting.create!(contestant: @cont3, outing: @out2)
+ContestantOuting.create!(contestant: @cont4, outing: @out2)
+ContestantOuting.create!(contestant: @cont5, outing: @out2)
+ContestantOuting.create!(contestant: @cont6, outing: @out2)

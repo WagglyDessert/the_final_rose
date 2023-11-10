@@ -4,5 +4,5 @@
 <p><%= @outing.date %></p>
 <p>Count of Contestants: <%= @outing.contestant_count %></p>
 <p>Contestants: <% @outing.contestants.each do |c| %></p>
-  <ol><%= link_to c.name, "/contestants/#{c.id}" %></ol>
+  <ol><%= link_to c.name, "/contestants/#{c.id}" %> <%= button_to "Remove #{c.name}", "/outings/#{c.id}", params: {contestant_id: c.id, outing_id: @outing.id}, method: :patch %></ol>
 <% end %>

@@ -1,6 +1,6 @@
 require "rails_helper"
 
-RSpec.describe "Bachelorette_Contestants" do
+RSpec.describe "Contestant" do
   before :each do
   @bach1 = Bachelorette.create!(name: "Michelle Young", season_number: 18, description: "Who will be the lucky guy?")
   @bach2 = Bachelorette.create!(name: "Hannah Brown", season_number: 15, description: "The most thrilling season yet!")
@@ -24,29 +24,28 @@ RSpec.describe "Bachelorette_Contestants" do
 
   ContestantOuting.create!(contestant: @cont1, outing: @out1)
   end
-  it "US2: shows names of contestants and their ages and hometowns and has link for their show page" do
-    # User Story 2 of 7 - Bachelorette's Contestants Index
-    # As a visitor,
-    # When I visit a bachelorette's contestants index '/bachelorettes/:bachelorette_id/contestants',
-    # I see the names of that bachelorette's contestants along with the following information:
-    # -Age
-    # -Hometown
-    # (e.g. "Name: Pilot Pete, Age: 34, Hometown: Irving, TX")
-    # And I can click on any contestants name (as a link) to go to that contestants show page "/contestants/:id"
-    visit "/bachelorettes/#{@bach1.id}/contestants"
-    expect(page).to have_content(@cont1.name)
-    expect(page).to have_content(@cont1.age)
-    expect(page).to have_content(@cont1.hometown)
-    expect(page).to have_content(@cont2.name)
-    expect(page).to have_content(@cont2.age)
-    expect(page).to have_content(@cont2.hometown)
-    expect(page).to_not have_content(@cont3.name)
-    expect(page).to_not have_content(@cont3.hometown)
-    expect(page).to_not have_content(@cont4.name)
-    expect(page).to_not have_content(@cont5.name)
+  it "US3: shows name of contestant and season number and season description, list of outings, link to outing show page" do
+  # User Story 3 of 7 - Contestant's Show Page
+  # As a visitor,
+  # When I visit a contestants show page,
+  # I see that contestants name as well as the season number and season description that this contestant was on.
+  # I also see a list of names of the outings that this contestant has been on while on the show.
+  # (e.g.
+  #                         Ben Higgins
+  # Season 20 - No wait, THIS is the most dramatic season yet
 
-    expect(page).to have_link(@cont1.name)
-    click_link(@cont1.name)
-    expect(current_path).to eq("/contestants/#{@cont1.id}")
+  # Outings: Kickball
+  #         Hot Springs
+  #         Helicopter Ride
+  # )
+  # When I click on an outing name, I'm taken to that outings show page
+    visit "/contestants/#{@cont1.id}"
+    expect(page).to have_content(@cont1.name)
+    expect(page).to have_content(@cont1.bachelorette.season_number)
+    expect(page).to have_content(@cont1.bachelorette.description)
+
+    expect(page).to have_link(@out1.name)
+    click_link(@out1.name)
+    expect(current_path).to eq("/outings/#{@out1.id}")
   end
 end
